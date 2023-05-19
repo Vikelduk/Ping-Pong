@@ -28,13 +28,24 @@ ball = {
     dy:3
 }
 
-function setup(){
-  canvas =  createCanvas(700,550);
-  canvas.parent("canvas");
+function setup() {
+	canvas = createCanvas(1240,336);
+	canvas.parent("canvas");
+
+	video = createCapture(VIDEO);
+	video.size(800,400);
+
+	poseNet = ml5.poseNet(video,  modelLoaded);
+	poseNet.on('pose', gotPoses)
 }
 
+function modelLoaded()
+{
+	console.log("Model Carregado")
+}
 
-function draw(){
+function draw()
+{
 
   background(0); 
 
