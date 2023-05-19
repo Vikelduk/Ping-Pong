@@ -29,7 +29,7 @@ ball = {
 }
 
 function setup() {
-	canvas = createCanvas(1240,336);
+	canvas = createCanvas(700,550);
 	canvas.parent("canvas");
 
 	video = createCapture(VIDEO);
@@ -41,12 +41,16 @@ function setup() {
 
 function modelLoaded()
 {
-	console.log("Model Carregado")
+	console.log("Modelo Carregado com Sucesso")
+}
+
+function gotPoses()
+{
+  console.log(".");
 }
 
 function draw()
 {
-
   background(0); 
 
   fill("black");
