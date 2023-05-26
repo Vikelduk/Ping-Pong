@@ -18,6 +18,10 @@ pcscore = 0;
 
 audio1 = '';
 
+pulsoX = "";
+pulsoY = "";
+
+pulsoPt = "";
 
 //Coordenadas x, y, raio, velocidade em x e velocidade em y
 ball = {
@@ -28,12 +32,14 @@ ball = {
     dy:3
 }
 
-function setup() {
-	canvas = createCanvas(700,550);
+function setup() 
+{
+	canvas = createCanvas(700,400);
 	canvas.parent("canvas");
 
 	video = createCapture(VIDEO);
-	video.size(800,400);
+	video.size(750,300);
+  video.parent("webcam")
 
 	poseNet = ml5.poseNet(video,  modelLoaded);
 	poseNet.on('pose', gotPoses)
@@ -44,13 +50,25 @@ function modelLoaded()
 	console.log("Modelo Carregado com Sucesso")
 }
 
-function gotPoses()
+function gotPoses(results)
 {
-  console.log(".");
+  if (results.lenght > 0)
+  {
+    pulsoX = results[0].pose.rightWrist.x;
+    pulsoY = results[0].pose.rightWrist.y;
+    pulsoPt = results[0].pose.keypoints[10].score;
+  }
 }
 
 function draw()
 {
+  if (pulsoPt > 0.2)
+  {
+    fill("black");
+    stroke("black");
+    circle(pulsoX, pulsoY, 20);
+  }
+
   background(0); 
 
   fill("black");

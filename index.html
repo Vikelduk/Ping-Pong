@@ -17,13 +17,16 @@
         <center>
           <div class="btn btn-warning heading">
             <h3>Jogo de Ping Pong IA</h3>
-            <h4 style="color: red;">Olá Professora, eu vi que tinha um erro na linha 134, mas o codigo dela foi a byjus que fez (codigo do jogo).</h4>
             <button class="btn btn-warning" data-toggle="modal" data-targuet="#myModal">Instruções</button>
           </div>
           
           <br><br>
     
           <button onclick="start()" class="btn btn-success" id="start">Jogar</button>
+
+          <br><br>
+
+          <button onclick="restart();" id="bt" class="btn btn-danger">Recomeçar</button>
     
           <br><br>
     
@@ -35,7 +38,9 @@
          
           <br><br>
 
-          <button onclick="restart();" id="bt" class="btn btn-danger">Recomeçar</button>
+          <div id="webcam"></div>
+
+          <br><br>
 
           <div id="myModal" class="modal fade">
             <div class="modal-dialog">
