@@ -23,6 +23,8 @@ pulsoY = "";
 
 pulsoPt = "";
 
+game_status = "";
+
 //Coordenadas x, y, raio, velocidade em x e velocidade em y
 ball = {
     x:350/2,
@@ -39,7 +41,7 @@ function setup()
 
 	video = createCapture(VIDEO);
 	video.size(750,300);
-  video.parent("webcam")
+  video.parent("webcam");
 
 	poseNet = ml5.poseNet(video,  modelLoaded);
 	poseNet.on('pose', gotPoses)
@@ -60,8 +62,19 @@ function gotPoses(results)
   }
 }
 
+function startGame()
+{
+  game_status = "start";
+  document.getElementById("status").innerHTML = "O jogo está Carregando";
+}
+
 function draw()
 {
+  if (game_status == "start")
+  {
+
+  }
+  
   if (pulsoPt > 0.2)
   {
     fill("black");
